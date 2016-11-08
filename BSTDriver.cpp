@@ -46,10 +46,17 @@ int main()
    //DO THIS
    //test your tree sort method
    CD** unsorted_cds = cds->toArray();
-   CD** sorted_cds = 
+   CD** sorted_cds = BinarySearchTree<CD>::treeSort(unsorted_cds, num_items, &CD::compare_items, &CD::compare_keys);
 
-
-
+	BinaryTreeIterator<CD>* tree_iter = bst->iterator();
+	tree_iter->setInorder();
+	for(int i = 0; i < num_items; i++)
+	{
+		CD* c = sorted_cds[i];
+		String* cd = c->getKey();
+		cd->displayString();
+	}
+	delete tree_iter;
 
 
 
