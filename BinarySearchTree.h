@@ -9,6 +9,7 @@
 //#include "wx/wx.h"
 using CSC2110::String;
 #include <cstdlib>
+#include <iostream>
 using namespace std;
 
 template < class T >
@@ -103,6 +104,7 @@ TreeNode<T>* BinarySearchTree<T>::removeItem(TreeNode<T>* tNode, String* sk)
 template < class T >
 TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
 {
+   cout << "line 127: here\n";
    if (tNode->getLeft() == NULL && tNode->getRight() == NULL)
    {
       delete tNode;
@@ -123,6 +125,7 @@ TreeNode<T>* BinarySearchTree<T>::removeNode(TreeNode<T>* tNode)
    else 
    {
       //DO THIS
+	  cout << "line 127: here\n";
 		TreeNode<T>* tempN = tNode->getRight();
 		T* temps = findLeftMost(tempN);
 		tNode->setItem(temps);
@@ -163,6 +166,7 @@ template < class T >
 T** BinarySearchTree<T>::toArray()
 {
    //DO THIS
+   cout<< "line 166: here\n";
    T** to_array = new T*[sze];
    int counter = 0;
    BinaryTreeIterator<T>* iter = iterator();
