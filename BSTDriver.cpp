@@ -55,8 +55,7 @@ tree_iter->setInorder();
 	while(tree_iter->hasNext())
 	{
 		CD* c = tree_iter->next();
-		c->getKey()->displayString();
-		end_l->displayString();
+		c->displayCD();
 	}
 	delete tree_iter;
 
