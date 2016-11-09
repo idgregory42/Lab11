@@ -42,8 +42,8 @@ int main()
       bst->insert(cd);
    }
    delete iter;
-
-
+	String* art = new String("Years In Waste");
+	bst->remove(art);
    //DO THIS
    //test your tree sort method
    CD** unsorted_cds = cds->toArray();
@@ -59,7 +59,7 @@ tree_iter->setInorder();
 	}
 	delete tree_iter;
 
-
+	
 
 
 
@@ -67,5 +67,6 @@ tree_iter->setInorder();
    deleteCDs(cds);
    delete cds;
    delete end_l;
+   delete art;
    return 0;
 }
