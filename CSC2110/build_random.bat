@@ -29,4 +29,4 @@ del *.o
 
 
 
-::exit
+exit

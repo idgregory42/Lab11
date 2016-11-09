@@ -7,8 +7,8 @@ using CSC2110::ListArrayIterator;
 #include "CD.h"
 using CSC2110::CD;
 
-#include <iostream>
-using namespace std;
+#include "Valtostr.h"
+using CSC2110::Valtostr;
 
 void deleteCDs(ListArray<CD>* list)
 {
@@ -29,9 +29,12 @@ int main()
 
    ListArray<CD>* cds = CD::readCDs("cds.txt");
    int num_items = cds->size();
-   cout << num_items << endl;
-   cout << endl;
-	String* end_l = new String("\n");
+   Valtostr* val = new Valtostr();
+   String* value = new String(val->i_to_c(num_items));
+   String* end_l = new String("\n");
+   value->displayString();
+   end_l->displayString();
+   
    //test the binary search tree
    //insert all of the cds
    ListArrayIterator<CD>* iter = cds->iterator();
@@ -42,16 +45,17 @@ int main()
       bst->insert(cd);
    }
    delete iter;
+   
+   //test the remove function
 	String* art = new String("Years In Waste");
 	bst->remove(art);
-   //DO THIS
-   //test your tree sort method
-   CD** unsorted_cds = cds->toArray();
-   CD** sorted_cds = BinarySearchTree<CD>::treeSort(unsorted_cds, num_items, &CD::compare_items, &CD::compare_keys);
+
+    CD** unsorted_cds = cds->toArray();
+    CD** sorted_cds = BinarySearchTree<CD>::treeSort(unsorted_cds, num_items, &CD::compare_items, &CD::compare_keys);
 
 	BinaryTreeIterator<CD>* tree_iter = bst->iterator();
 
-tree_iter->setInorder();
+	tree_iter->setInorder();
 	while(tree_iter->hasNext())
 	{
 		CD* c = tree_iter->next();
@@ -59,14 +63,11 @@ tree_iter->setInorder();
 	}
 	delete tree_iter;
 
-	
-
-
-
-
    deleteCDs(cds);
    delete cds;
    delete end_l;
    delete art;
+   delete value;
+   delete val;
    return 0;
 }

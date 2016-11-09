@@ -5,7 +5,7 @@ using CSC2110::ListArrayIterator;
 
 Permutation::Permutation(int q, int n)
 {
-   random = Random::getRandom();
+   random = new CSC2110::Random();
 
    r = q;
    numbers = new ListArray<Integer>();
@@ -26,6 +26,7 @@ Permutation::~Permutation()
    }
    delete iter;
    delete numbers;
+   delete random;
 }
 
 int Permutation::next()
